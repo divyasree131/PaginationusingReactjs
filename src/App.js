@@ -9,7 +9,7 @@ export default function App() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        "https://jsonplaceholder.typicode.com/posts"
+        "https://jsonplaceholder.typicode.com/posts",
       );
       const result = await response.json();
       setData(result);
@@ -41,33 +41,43 @@ export default function App() {
   };
 
   return (
-    <div>
-      <ul className="listContent">
-        {currentPosts.map((item) => (
-          <li key={item.id}>{item.title}</li>
-        ))}
-      </ul>
-      <div className="pagination">
-        <button className="prevBtn" onClick={handlePrevPage} disabled={currentPage === 1}>
-          Prev
-        </button>
-        {pageNumbers.map((pagenumber) => (
-          <span
-            key={pagenumber}
-            className={
-              currentPage === pagenumber
-                ? "activepagination"
-                : "paginationnumber"
-            }
-            onClick={() => setPaginationHandler(pagenumber)}
+    data.length && (
+      <div>
+        <ul className="listContent">
+          {currentPosts.map((item) => (
+            <li key={item.id}>{item.title}</li>
+          ))}
+        </ul>
+        <div className="pagination">
+          <button
+            className="prevBtn"
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
           >
-            {pagenumber}
-          </span>
-        ))}
-        <button className="nextBtn" onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next
-        </button>
+            Prev
+          </button>
+          {pageNumbers.map((pagenumber) => (
+            <span
+              key={pagenumber}
+              className={
+                currentPage === pagenumber
+                  ? "activepagination"
+                  : "paginationnumber"
+              }
+              onClick={() => setPaginationHandler(pagenumber)}
+            >
+              {pagenumber}
+            </span>
+          ))}
+          <button
+            className="nextBtn"
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
       </div>
-    </div>
+    )
   );
 }
