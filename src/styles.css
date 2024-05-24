@@ -1,0 +1,30 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+.listContent {
+  align-items: center;
+}
+.paginationnumber {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+.activepagination {
+  padding: 10px;
+  border: 1px solid grey;
+  cursor: pointer;
+  background-color: darkgray;
+}
+.prevBtn,
+.nextBtn {
+  padding: 10px;
+  background-color: lightblue;
+}
